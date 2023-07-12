@@ -44,13 +44,13 @@ export default function TextForm(props) {
             rows="10"
           ></textarea>
         </div>
-        <button className="btn btn-primary mx-1" onClick={handleUpClick}>
+        <button  disabled={text.length===0} className="btn btn-primary mx-1" onClick={handleUpClick}>
           ConvertoUppercase
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleLoClick}>
+        <button  disabled={text.length===0} className="btn btn-primary mx-1" onClick={handleLoClick}>
           ConvertoLowercase
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleClearClick}>
+        <button disabled={text.length===0} className="btn btn-primary mx-1" onClick={handleClearClick}>
           Clear
         </button>
       </div>
@@ -60,13 +60,13 @@ export default function TextForm(props) {
       >
         <h2 className="my-3">Text Summary</h2>
         <p>
-          {text.split(" ").length} words and {text.length} letters
+          {text.split(" ").filter((element)=>{return element.length!==0}).length} words and {text.length} letters
         </p>
         <h2>Preview</h2>
         <p>
           { text.length > 0
             ? text
-            : "Enter the text in the above text area to preview the text here"}
+            : "Nothing to Preview"}
         </p>
       </div>
     </>
